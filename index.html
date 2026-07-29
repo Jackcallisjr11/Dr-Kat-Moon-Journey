@@ -1,0 +1,2155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
+
+<meta name="theme-color" content="#050914">
+
+<title>Dr Kat's Moon Journey 🌙</title>
+
+<style>
+
+/* ==============================
+   RESET
+============================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    color:#ffffff;
+    background:#050914;
+}
+
+
+/* ==============================
+   BACKGROUND
+============================== */
+
+.background{
+    position:fixed;
+    inset:0;
+    z-index:0;
+
+    background-image:
+        linear-gradient(
+            rgba(2,6,15,.12),
+            rgba(2,6,15,.20)
+        ),
+        url("assets/Images/night-clouds.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+
+/* ==============================
+   INTRO
+============================== */
+
+#intro{
+    position:fixed;
+    inset:0;
+    z-index:20;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:28px;
+
+    text-align:center;
+}
+
+.intro-content{
+    width:100%;
+    max-width:470px;
+}
+
+.intro-moon{
+    font-size:35px;
+    margin-bottom:22px;
+
+    animation:floatMoon 4s ease-in-out infinite;
+}
+
+@keyframes floatMoon{
+    50%{
+        transform:translateY(-7px);
+    }
+}
+
+.small-heading{
+    font-size:10px;
+    letter-spacing:4px;
+
+    color:rgba(255,255,255,.70);
+
+    margin-bottom:20px;
+}
+
+.main-title{
+    font-size:clamp(38px,10vw,55px);
+    font-weight:600;
+
+    text-shadow:
+        0 3px 15px rgba(0,0,0,.70);
+}
+
+.name{
+    margin-top:9px;
+
+    font-size:clamp(29px,8vw,42px);
+    font-weight:600;
+
+    color:#fff0c5;
+
+    text-shadow:
+        0 3px 15px rgba(0,0,0,.70);
+}
+
+.line{
+    width:45px;
+    height:1px;
+
+    margin:26px auto;
+
+    background:
+        rgba(255,236,185,.70);
+}
+
+.intro-text{
+    max-width:390px;
+
+    margin:auto;
+
+    font-size:16px;
+    line-height:1.7;
+
+    color:
+        rgba(255,255,255,.94);
+
+    text-shadow:
+        0 2px 9px rgba(0,0,0,.90);
+}
+
+.highlight{
+    color:#fff0c5;
+    font-weight:bold;
+}
+
+.start-button{
+    position:relative;
+    z-index:100;
+
+    margin-top:35px;
+
+    padding:16px 30px;
+
+    border-radius:40px;
+
+    border:
+        1px solid rgba(255,235,185,.75);
+
+    background:
+        rgba(3,8,18,.55);
+
+    color:#ffffff;
+
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:15px;
+
+    cursor:pointer;
+
+    touch-action:manipulation;
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+.start-button:active{
+    transform:scale(.96);
+}
+
+
+/* ==============================
+   JOURNEY
+============================== */
+
+#journey{
+    position:fixed;
+    inset:0;
+    z-index:10;
+
+    display:none;
+}
+
+#journey.show{
+    display:block;
+}
+
+
+/* ==============================
+   SLIDER
+============================== */
+
+.slider{
+    width:100%;
+    height:100%;
+
+    display:flex;
+
+    overflow-x:auto;
+    overflow-y:hidden;
+
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+
+    scrollbar-width:none;
+}
+
+.slider::-webkit-scrollbar{
+    display:none;
+}
+
+.slide{
+    flex:0 0 100%;
+
+    width:100%;
+    height:100%;
+
+    scroll-snap-align:start;
+    scroll-snap-stop:always;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:
+        25px
+        24px
+        90px;
+
+    text-align:center;
+}
+
+.slide-content{
+    width:100%;
+    max-width:470px;
+}
+
+
+/* ==============================
+   YEAR
+============================== */
+
+.chapter{
+    font-size:9px;
+    letter-spacing:3px;
+
+    color:
+        rgba(255,255,255,.65);
+
+    margin-bottom:12px;
+
+    text-shadow:
+        0 2px 8px #000000;
+}
+
+.date{
+    font-size:11px;
+    letter-spacing:4px;
+
+    color:#ffebb8;
+
+    text-shadow:
+        0 2px 8px #000000;
+}
+
+.year{
+    margin-top:6px;
+
+    font-size:43px;
+    font-weight:500;
+
+    letter-spacing:3px;
+
+    text-shadow:
+        0 3px 15px rgba(0,0,0,.80);
+}
+
+
+/* ==============================
+   MOON
+============================== */
+
+.moon-container{
+    position:relative;
+
+    width:205px;
+    height:205px;
+
+    margin:
+        15px auto 5px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.moon-glow{
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,245,210,.14);
+
+    filter:blur(30px);
+
+    animation:
+        moonGlow 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes moonGlow{
+    to{
+        transform:scale(1.2);
+        opacity:.60;
+    }
+}
+
+.moon-image{
+    position:relative;
+    z-index:2;
+
+    width:180px;
+    height:180px;
+
+    object-fit:contain;
+
+    filter:
+        drop-shadow(
+            0 0 18px rgba(255,245,210,.28)
+        );
+
+    animation:
+        moonMove 5s ease-in-out infinite;
+}
+
+@keyframes moonMove{
+    50%{
+        transform:translateY(-6px);
+    }
+}
+
+
+/* ==============================
+   MOON INFO
+============================== */
+
+.phase{
+    margin-top:4px;
+
+    font-size:11px;
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    color:#ffebb8;
+
+    text-shadow:
+        0 2px 7px #000000;
+}
+
+.illumination{
+    margin-top:6px;
+
+    font-size:11px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    text-shadow:
+        0 2px 7px #000000;
+}
+
+.divider{
+    width:36px;
+    height:1px;
+
+    margin:17px auto;
+
+    background:
+        rgba(255,235,185,.65);
+}
+
+
+/* ==============================
+   TEXT
+============================== */
+
+.slide-title{
+    font-size:22px;
+    font-weight:600;
+
+    color:#fff0c5;
+
+    text-shadow:
+        0 2px 9px rgba(0,0,0,.85);
+}
+
+.wish{
+    max-width:390px;
+
+    margin:
+        12px auto 0;
+
+    font-size:15px;
+    line-height:1.6;
+
+    color:
+        rgba(255,255,255,.95);
+
+    text-shadow:
+        0 2px 9px rgba(0,0,0,.90);
+}
+
+.swipe{
+    margin-top:21px;
+
+    font-size:8px;
+    letter-spacing:2px;
+
+    color:
+        rgba(255,255,255,.65);
+
+    animation:
+        swipeMove 1.7s ease-in-out infinite;
+}
+
+@keyframes swipeMove{
+    50%{
+        transform:translateX(6px);
+    }
+}
+
+
+/* ==============================
+   NAVIGATION
+============================== */
+
+.navigation{
+    position:fixed;
+
+    z-index:30;
+
+    left:50%;
+
+    bottom:
+        max(
+            22px,
+            env(safe-area-inset-bottom)
+        );
+
+    transform:translateX(-50%);
+
+    width:min(90%,470px);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    pointer-events:none;
+}
+
+.nav-button,
+.progress{
+    pointer-events:auto;
+}
+
+.nav-button{
+    width:41px;
+    height:41px;
+
+    border-radius:50%;
+
+    border:
+        1px solid rgba(255,255,255,.40);
+
+    background:
+        rgba(3,8,18,.55);
+
+    color:#ffffff;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    touch-action:manipulation;
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+.nav-button:active{
+    transform:scale(.92);
+}
+
+.progress{
+    padding:8px 14px;
+
+    border-radius:20px;
+
+    background:
+        rgba(3,8,18,.45);
+
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+
+/* ==============================
+   MUSIC
+============================== */
+
+.music-button{
+    position:fixed;
+
+    z-index:100;
+
+    top:
+        max(
+            18px,
+            env(safe-area-inset-top)
+        );
+
+    right:18px;
+
+    width:43px;
+    height:43px;
+
+    border-radius:50%;
+
+    border:
+        1px solid rgba(255,255,255,.35);
+
+    background:
+        rgba(3,8,18,.55);
+
+    color:#ffffff;
+
+    font-size:18px;
+
+    display:none;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    touch-action:manipulation;
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+
+/* ==============================
+   2026 ENDING
+============================== */
+
+.final-icons{
+    margin-top:18px;
+
+    font-size:26px;
+
+    animation:
+        finalPulse 2s ease-in-out infinite;
+}
+
+@keyframes finalPulse{
+    50%{
+        transform:scale(1.12);
+    }
+}
+
+.final-text{
+    margin-top:14px;
+
+    font-size:17px;
+    font-weight:bold;
+
+    color:#fff0c5;
+}
+
+.final-small{
+    margin-top:8px;
+
+    font-size:11px;
+
+    color:
+        rgba(255,255,255,.75);
+}
+
+
+/* ==============================
+   FINAL SURPRISE
+============================== */
+
+.final-surprise{
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    align-items:flex-start;
+
+    padding-top:80px;
+    padding-bottom:110px;
+}
+
+.final-surprise-content{
+    margin:auto;
+
+    padding-bottom:120px;
+}
+
+.final-moon{
+    font-size:34px;
+
+    margin-bottom:20px;
+
+    animation:
+        moonMove 4s ease-in-out infinite;
+}
+
+.final-big-title{
+    margin-top:12px;
+
+    font-size:34px;
+    font-weight:600;
+
+    color:#ffffff;
+
+    text-shadow:
+        0 3px 15px rgba(0,0,0,.80);
+}
+
+.final-number{
+    margin-top:14px;
+
+    font-size:70px;
+    font-weight:bold;
+
+    color:#fff0c5;
+
+    text-shadow:
+        0 0 20px rgba(255,240,197,.30),
+        0 4px 15px rgba(0,0,0,.80);
+}
+
+.final-message{
+    margin-top:12px;
+
+    font-size:15px;
+    line-height:1.8;
+
+    color:
+        rgba(255,255,255,.90);
+}
+
+.final-birthday{
+    margin-top:10px;
+
+    font-size:23px;
+
+    color:#fff0c5;
+}
+
+.final-blessing{
+    max-width:390px;
+
+    margin:
+        15px auto 0;
+
+    font-size:14px;
+    line-height:1.7;
+
+    color:
+        rgba(255,255,255,.90);
+}
+
+
+/* ==============================
+   FINAL BUTTONS
+============================== */
+
+.last-button,
+.replay-button{
+    margin-top:28px;
+
+    padding:14px 25px;
+
+    border-radius:30px;
+
+    border:
+        1px solid rgba(255,235,185,.70);
+
+    background:
+        rgba(3,8,18,.55);
+
+    color:#ffffff;
+
+    font-size:14px;
+    font-family:Arial,Helvetica,sans-serif;
+
+    cursor:pointer;
+
+    touch-action:manipulation;
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+.last-button:active,
+.replay-button:active{
+    transform:scale(.96);
+}
+
+
+/* ==============================
+   SECRET MESSAGE
+============================== */
+
+.secret-message{
+    display:none;
+
+    max-width:390px;
+
+    margin:
+        30px auto 0;
+
+    padding:
+        25px 20px;
+
+    border-radius:25px;
+
+    background:
+        rgba(3,8,18,.45);
+
+    border:
+        1px solid rgba(255,240,197,.25);
+
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+}
+
+.secret-message.show{
+    display:block;
+
+    animation:
+        secretAppear 1s ease;
+}
+
+@keyframes secretAppear{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.secret-stars{
+    font-size:25px;
+
+    margin-bottom:20px;
+}
+
+.secret-message p{
+    margin-top:15px;
+
+    font-size:14px;
+    line-height:1.8;
+
+    color:
+        rgba(255,255,255,.93);
+}
+
+.secret-ending{
+    margin-top:25px;
+
+    font-size:17px;
+    line-height:1.7;
+
+    font-weight:600;
+
+    color:#fff0c5;
+}
+
+.replay-button{
+    margin-top:25px;
+}
+
+
+/* ==============================
+   SMALL PHONE
+============================== */
+
+@media(max-height:700px){
+
+    .slide{
+        padding-top:15px;
+        padding-bottom:70px;
+    }
+
+    .chapter{
+        margin-bottom:5px;
+    }
+
+    .year{
+        font-size:34px;
+    }
+
+    .moon-container{
+        width:140px;
+        height:140px;
+
+        margin-top:5px;
+    }
+
+    .moon-image{
+        width:120px;
+        height:120px;
+    }
+
+    .moon-glow{
+        width:100px;
+        height:100px;
+    }
+
+    .divider{
+        margin:9px auto;
+    }
+
+    .slide-title{
+        font-size:19px;
+    }
+
+    .wish{
+        font-size:13px;
+        line-height:1.4;
+    }
+
+    .swipe{
+        margin-top:10px;
+    }
+
+    .final-surprise{
+        padding-top:60px;
+        padding-bottom:100px;
+    }
+
+    .final-big-title{
+        font-size:28px;
+    }
+
+    .final-number{
+        font-size:55px;
+    }
+
+    .final-message{
+        font-size:13px;
+    }
+
+    .final-blessing{
+        font-size:13px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==============================
+     BACKGROUND
+============================== -->
+
+<div class="background"></div>
+
+
+<!-- ==============================
+     MUSIC
+============================== -->
+
+<audio
+    id="bgMusic"
+    loop
+    preload="auto"
+>
+    <source
+        src="assets/Music/birthday-music.mp3"
+        type="audio/mpeg"
+    >
+</audio>
+
+
+<button
+    id="musicButton"
+    class="music-button"
+    type="button"
+    aria-label="Toggle music"
+>
+    🔊
+</button>
+
+
+<!-- ==============================
+     INTRO
+============================== -->
+
+<section id="intro">
+
+    <div class="intro-content">
+
+        <div class="intro-moon">
+            ✦ 🌙 ✦
+        </div>
+
+        <div class="small-heading">
+            A JOURNEY THROUGH THE YEARS
+        </div>
+
+        <h1 class="main-title">
+            Happy Birthday
+        </h1>
+
+        <h2 class="name">
+            Dr Kat 🥳
+        </h2>
+
+        <div class="line"></div>
+
+        <p class="intro-text">
+
+            Since the day you arrived,
+            the moon has crossed the sky
+            thousands of times.
+
+            <br><br>
+
+            But every
+
+            <span class="highlight">
+                August 3rd
+            </span>
+
+            carries another little chapter
+            of your story.
+
+        </p>
+
+        <button
+            id="startButton"
+            class="start-button"
+            type="button"
+        >
+            Begin your journey &nbsp; →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     JOURNEY
+============================== -->
+
+<section id="journey">
+
+    <div
+        class="slider"
+        id="slider"
+    ></div>
+
+
+    <div class="navigation">
+
+        <button
+            id="previousButton"
+            class="nav-button"
+            type="button"
+            aria-label="Previous slide"
+        >
+            ‹
+        </button>
+
+
+        <div
+            class="progress"
+            id="progress"
+        >
+            01 / 20
+        </div>
+
+
+        <button
+            id="nextButton"
+            class="nav-button"
+            type="button"
+            aria-label="Next slide"
+        >
+            ›
+        </button>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* ==============================
+   DATA
+============================== */
+
+var journeyData = [
+
+{
+    year:2008,
+    phase:"Waxing Crescent",
+    illumination:"4.6%",
+    title:"The Journey Begins",
+    wish:"On this August day, beneath a young crescent moon, your story began. A tiny new person arrived, with an entire lifetime still waiting ahead."
+},
+
+{
+    year:2009,
+    phase:"Waxing Gibbous",
+    illumination:"95.0%",
+    title:"One Year Around the Sun",
+    wish:"Your first journey around the sun was complete. One year of little smiles, first moments and memories that would only become more precious with time."
+},
+
+{
+    year:2010,
+    phase:"Third Quarter",
+    illumination:"Around 50%",
+    title:"Two Years of You",
+    wish:"The world was becoming bigger with every little step. There were so many things still waiting for you to discover."
+},
+
+{
+    year:2011,
+    phase:"Waxing Crescent",
+    illumination:"19.1%",
+    title:"Three",
+    wish:"Another August arrived beneath a growing crescent. May the curious little heart from these early years always remain somewhere inside you."
+},
+
+{
+    year:2012,
+    phase:"Waning Gibbous",
+    illumination:"Almost Full",
+    title:"Four Years of Light",
+    wish:"Another year, another chapter. Some of the smallest childhood moments eventually become the memories we wish we could visit once again."
+},
+
+{
+    year:2013,
+    phase:"Waning Crescent",
+    illumination:"Crescent Moon",
+    title:"Five",
+    wish:"Five journeys around the sun. Five years of growing, learning, laughing and slowly becoming the person the world would one day know."
+},
+
+{
+    year:2014,
+    phase:"Waxing Crescent",
+    illumination:"44.4%",
+    title:"Keep Dreaming",
+    wish:"May you never lose the part of yourself that looks at the world with wonder and believes that beautiful things are possible."
+},
+
+{
+    year:2015,
+    phase:"Waning Gibbous",
+    illumination:"Gibbous Moon",
+    title:"Seven",
+    wish:"Seven journeys around the sun, with an entire universe still ahead. May life always give you something beautiful to look forward to."
+},
+
+{
+    year:2016,
+    phase:"New Moon",
+    illumination:"New Moon",
+    title:"A New Sky",
+    wish:"The moon almost disappeared from the night sky, yet it was still there. A reminder that light can exist even when we cannot see it yet."
+},
+
+{
+    year:2017,
+    phase:"Waxing Gibbous",
+    illumination:"Gibbous Moon",
+    title:"Nine",
+    wish:"May your heart stay kind, your laughter stay real, and your dreams continue to grow beyond the sky above you."
+},
+
+{
+    year:2018,
+    phase:"Waning Gibbous",
+    illumination:"Gibbous Moon",
+    title:"A Decade of You",
+    wish:"Ten years of stories, laughter, lessons and countless little moments had quietly begun shaping the person you were becoming."
+},
+
+{
+    year:2019,
+    phase:"Waxing Crescent",
+    illumination:"5.4%",
+    title:"Still Becoming",
+    wish:"You never needed to have everything figured out. Becoming yourself has always been one of the most beautiful parts of the journey."
+},
+
+{
+    year:2020,
+    phase:"Full Moon",
+    illumination:"Full Moon",
+    title:"Through Different Skies",
+    wish:"The world felt different that year, but August 3rd still arrived beneath the moon. Some chapters remind us just how much strength we carry."
+},
+
+{
+    year:2021,
+    phase:"Waning Crescent",
+    illumination:"Crescent Moon",
+    title:"Keep Going",
+    wish:"Some years teach us to smile. Others teach us to stay strong. Every one of them quietly becomes part of who we are."
+},
+
+{
+    year:2022,
+    phase:"Waxing Crescent",
+    illumination:"30.2%",
+    title:"Fourteen",
+    wish:"Never underestimate how much a simple smile, a kind word, or simply being yourself can mean to someone around you."
+},
+
+{
+    year:2023,
+    phase:"Waning Gibbous",
+    illumination:"Near Full",
+    title:"Fifteen",
+    wish:"Maybe you didn't notice it, but you were becoming someone whose presence could make ordinary moments feel a little more special."
+},
+
+{
+    year:2024,
+    phase:"Waning Crescent",
+    illumination:"Thin Crescent",
+    title:"Sixteen",
+    wish:"May you find courage for every beginning, patience through every difficult chapter, and people who genuinely want to see you happy."
+},
+
+{
+    year:2025,
+    phase:"Waxing Gibbous",
+    illumination:"Gibbous Moon",
+    title:"Seventeen",
+    wish:"Another year brought you closer to the person you're becoming. Somewhere along the way, I'm simply grateful that I got the chance to know you."
+},
+
+{
+    year:2026,
+    phase:"Waning Gibbous",
+    illumination:"Gibbous Moon",
+    title:"Eighteen Years Under This Sky",
+    wish:"Eighteen years ago, your journey began. Somewhere along that journey, our paths happened to cross. I hope this new chapter brings you genuine happiness, peaceful days, unforgettable memories and every beautiful thing you're working toward."
+}
+
+];
+
+
+/* ==============================
+   VARIABLES
+============================== */
+
+var currentSlide = 0;
+
+var totalSlides =
+    journeyData.length + 1;
+
+
+var intro =
+    document.getElementById("intro");
+
+
+var journey =
+    document.getElementById("journey");
+
+
+var slider =
+    document.getElementById("slider");
+
+
+var progress =
+    document.getElementById("progress");
+
+
+var startButton =
+    document.getElementById("startButton");
+
+
+var previousButton =
+    document.getElementById("previousButton");
+
+
+var nextButton =
+    document.getElementById("nextButton");
+
+
+var bgMusic =
+    document.getElementById("bgMusic");
+
+
+var musicButton =
+    document.getElementById("musicButton");
+
+
+/* ==============================
+   PAD NUMBER
+============================== */
+
+function padNumber(number){
+
+    if(number < 10){
+        return "0" + number;
+    }
+
+    return String(number);
+
+}
+
+
+/* ==============================
+   CREATE SLIDES
+============================== */
+
+function createSlides(){
+
+    slider.innerHTML = "";
+
+
+    for(
+        var i = 0;
+        i < journeyData.length;
+        i++
+    ){
+
+        var item =
+            journeyData[i];
+
+
+        var slide =
+            document.createElement("article");
+
+
+        slide.className =
+            "slide";
+
+
+        var ending = "";
+
+
+        if(
+            i === journeyData.length - 1
+        ){
+
+            ending =
+
+                '<div class="final-icons">' +
+
+                    '🌙 ✨ 💛' +
+
+                '</div>' +
+
+
+                '<div class="final-text">' +
+
+                    'Happy 18th Birthday, Dr Kat 🥳' +
+
+                '</div>' +
+
+
+                '<div class="final-small">' +
+
+                    'May this be one of your best chapters yet.' +
+
+                '</div>';
+
+        }
+
+        else{
+
+            ending =
+
+                '<div class="swipe">' +
+
+                    'SWIPE LEFT TO CONTINUE →' +
+
+                '</div>';
+
+        }
+
+
+        slide.innerHTML =
+
+            '<div class="slide-content">' +
+
+
+                '<div class="chapter">' +
+
+                    '✦ CHAPTER ' +
+
+                    padNumber(i + 1) +
+
+                    ' ✦' +
+
+                '</div>' +
+
+
+                '<div class="date">' +
+
+                    '03 AUGUST' +
+
+                '</div>' +
+
+
+                '<h2 class="year">' +
+
+                    item.year +
+
+                '</h2>' +
+
+
+                '<div class="moon-container">' +
+
+
+                    '<div class="moon-glow"></div>' +
+
+
+                    '<img ' +
+
+                        'class="moon-image" ' +
+
+                        'src="assets/Moon/moon-' +
+
+                        item.year +
+
+                        '.png" ' +
+
+                        'alt="Moon ' +
+
+                        item.year +
+
+                        '">' +
+
+
+                '</div>' +
+
+
+                '<div class="phase">' +
+
+                    item.phase +
+
+                '</div>' +
+
+
+                '<div class="illumination">' +
+
+                    item.illumination +
+
+                '</div>' +
+
+
+                '<div class="divider"></div>' +
+
+
+                '<h3 class="slide-title">' +
+
+                    item.title +
+
+                '</h3>' +
+
+
+                '<p class="wish">' +
+
+                    item.wish +
+
+                '</p>' +
+
+
+                ending +
+
+
+            '</div>';
+
+
+        slider.appendChild(slide);
+
+    }
+
+
+    /* ==============================
+       FINAL SURPRISE SLIDE
+    ============================== */
+
+
+    var finalSlide =
+        document.createElement("article");
+
+
+    finalSlide.className =
+        "slide final-surprise";
+
+
+    finalSlide.innerHTML = `
+
+        <div class="slide-content final-surprise-content">
+
+
+            <div class="final-moon">
+
+                ✦ 🌙 ✦
+
+            </div>
+
+
+            <div class="chapter">
+
+                THE JOURNEY CONTINUES
+
+            </div>
+
+
+            <h2 class="final-big-title">
+
+                And here we are...
+
+            </h2>
+
+
+            <div class="final-number">
+
+                18
+
+            </div>
+
+
+            <p class="final-message">
+
+                Eighteen years.
+
+                <br>
+
+                Nineteen August skies.
+
+                <br>
+
+                And countless memories still waiting to happen.
+
+            </p>
+
+
+            <div class="divider"></div>
+
+
+            <h3 class="final-birthday">
+
+                Happy Birthday, Dr Kat 🥳💛
+
+            </h3>
+
+
+            <p class="final-blessing">
+
+                May God bless every chapter waiting ahead of you,
+                fill your days with peace, happiness and beautiful
+                memories, and lead you toward everything your heart
+                is working for.
+
+            </p>
+
+
+            <button
+                class="last-button"
+                type="button"
+                onclick="showSecret()"
+            >
+
+                One last thing ✨
+
+            </button>
+
+
+            <div
+                id="secretMessage"
+                class="secret-message"
+            >
+
+
+                <div class="secret-stars">
+
+                    ✨ 🌙 ✨
+
+                </div>
+
+
+                <p>
+
+                    Out of all the people this huge world could
+                    have placed in my story, somehow it let me
+                    meet you.
+
+                </p>
+
+
+                <p>
+
+                    And maybe you don't realize it...
+
+                    but somewhere between ordinary conversations,
+                    random moments and little memories,
+                    you became someone a little more special
+                    than you probably know. 💛
+
+                </p>
+
+
+                <p>
+
+                    I don't know where every road ahead will lead,
+                    but I'll always be grateful that,
+                    for at least one chapter of this life,
+                    our paths crossed beneath the same sky. 🌙
+
+                </p>
+
+
+                <div class="secret-ending">
+
+                    Keep smiling, Dr Kat.
+
+                    <br>
+
+                    It suits you. ✨
+
+                </div>
+
+
+                <button
+                    class="replay-button"
+                    type="button"
+                    onclick="replayJourney()"
+                >
+
+                    ↻ Replay the journey
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+    `;
+
+
+    slider.appendChild(finalSlide);
+
+}
+
+
+/* ==============================
+   UPDATE PROGRESS
+============================== */
+
+function updateProgress(){
+
+    progress.textContent =
+
+        padNumber(currentSlide + 1)
+
+        +
+
+        " / "
+
+        +
+
+        padNumber(totalSlides);
+
+}
+
+
+/* ==============================
+   BEGIN JOURNEY
+============================== */
+
+function beginJourney(){
+
+    /*
+       Hide intro
+    */
+
+    intro.style.display =
+        "none";
+
+
+    /*
+       Show journey
+    */
+
+    journey.classList.add(
+        "show"
+    );
+
+
+    /*
+       Show music button
+    */
+
+    musicButton.style.display =
+        "flex";
+
+
+    /*
+       Start from first slide
+    */
+
+    currentSlide = 0;
+
+
+    slider.scrollLeft = 0;
+
+
+    updateProgress();
+
+
+    /*
+       Start background music
+    */
+
+    try{
+
+        bgMusic.volume =
+            0.32;
+
+
+        bgMusic.muted =
+            false;
+
+
+        var playPromise =
+            bgMusic.play();
+
+
+        if(
+            playPromise &&
+            typeof playPromise.catch === "function"
+        ){
+
+            playPromise.catch(
+
+                function(){
+
+                    musicButton.textContent =
+                        "🔇";
+
+                }
+
+            );
+
+        }
+
+    }
+
+    catch(error){
+
+        musicButton.textContent =
+            "🔇";
+
+    }
+
+}
+
+
+/* ==============================
+   MUSIC TOGGLE
+============================== */
+
+function toggleMusic(){
+
+    try{
+
+
+        if(
+            bgMusic.paused
+        ){
+
+            bgMusic.muted =
+                false;
+
+
+            var playPromise =
+                bgMusic.play();
+
+
+            musicButton.textContent =
+                "🔊";
+
+
+            if(
+                playPromise &&
+                typeof playPromise.catch === "function"
+            ){
+
+                playPromise.catch(
+
+                    function(){
+
+                        musicButton.textContent =
+                            "🔇";
+
+                    }
+
+                );
+
+            }
+
+        }
+
+
+        else if(
+            bgMusic.muted
+        ){
+
+            bgMusic.muted =
+                false;
+
+
+            musicButton.textContent =
+                "🔊";
+
+        }
+
+
+        else{
+
+            bgMusic.muted =
+                true;
+
+
+            musicButton.textContent =
+                "🔇";
+
+        }
+
+
+    }
+
+    catch(error){
+
+        musicButton.textContent =
+            "🔇";
+
+    }
+
+}
+
+
+/* ==============================
+   GO TO SLIDE
+============================== */
+
+function goToSlide(index){
+
+
+    if(
+        index < 0
+    ){
+
+        index = 0;
+
+    }
+
+
+    if(
+        index >= totalSlides
+    ){
+
+        index =
+            totalSlides - 1;
+
+    }
+
+
+    currentSlide =
+        index;
+
+
+    slider.scrollTo({
+
+        left:
+
+            currentSlide *
+
+            slider.clientWidth,
+
+        behavior:
+            "smooth"
+
+    });
+
+
+    updateProgress();
+
+}
+
+
+/* ==============================
+   NEXT SLIDE
+============================== */
+
+function nextSlide(){
+
+    goToSlide(
+        currentSlide + 1
+    );
+
+}
+
+
+/* ==============================
+   PREVIOUS SLIDE
+============================== */
+
+function previousSlide(){
+
+    goToSlide(
+        currentSlide - 1
+    );
+
+}
+
+
+/* ==============================
+   SECRET MESSAGE
+============================== */
+
+function showSecret(){
+
+    var secret =
+        document.getElementById(
+            "secretMessage"
+        );
+
+
+    if(secret){
+
+        secret.classList.add(
+            "show"
+        );
+
+
+        setTimeout(
+
+            function(){
+
+                secret.scrollIntoView({
+
+                    behavior:
+                        "smooth",
+
+                    block:
+                        "center"
+
+                });
+
+            },
+
+            200
+
+        );
+
+    }
+
+}
+
+
+/* ==============================
+   REPLAY JOURNEY
+============================== */
+
+function replayJourney(){
+
+    var secret =
+        document.getElementById(
+            "secretMessage"
+        );
+
+
+    if(secret){
+
+        secret.classList.remove(
+            "show"
+        );
+
+    }
+
+
+    currentSlide =
+        0;
+
+
+    slider.scrollTo({
+
+        left:0,
+
+        behavior:
+            "smooth"
+
+    });
+
+
+    updateProgress();
+
+}
+
+
+/* ==============================
+   BUTTON EVENTS
+============================== */
+
+startButton.addEventListener(
+
+    "click",
+
+    beginJourney
+
+);
+
+
+musicButton.addEventListener(
+
+    "click",
+
+    toggleMusic
+
+);
+
+
+previousButton.addEventListener(
+
+    "click",
+
+    previousSlide
+
+);
+
+
+nextButton.addEventListener(
+
+    "click",
+
+    nextSlide
+
+);
+
+
+/* ==============================
+   SWIPE / SCROLL DETECTION
+============================== */
+
+var scrollTimer;
+
+
+slider.addEventListener(
+
+    "scroll",
+
+    function(){
+
+
+        clearTimeout(
+            scrollTimer
+        );
+
+
+        scrollTimer =
+            setTimeout(
+
+                function(){
+
+
+                    var width =
+                        slider.clientWidth;
+
+
+                    if(
+                        width <= 0
+                    ){
+
+                        return;
+
+                    }
+
+
+                    currentSlide =
+
+                        Math.round(
+
+                            slider.scrollLeft /
+
+                            width
+
+                        );
+
+
+                    if(
+                        currentSlide < 0
+                    ){
+
+                        currentSlide =
+                            0;
+
+                    }
+
+
+                    if(
+                        currentSlide >= totalSlides
+                    ){
+
+                        currentSlide =
+                            totalSlides - 1;
+
+                    }
+
+
+                    updateProgress();
+
+
+                },
+
+                100
+
+            );
+
+    }
+
+);
+
+
+/* ==============================
+   SCREEN RESIZE / ROTATION
+============================== */
+
+window.addEventListener(
+
+    "resize",
+
+    function(){
+
+
+        slider.scrollLeft =
+
+            currentSlide *
+
+            slider.clientWidth;
+
+
+    }
+
+);
+
+
+/* ==============================
+   KEYBOARD NAVIGATION
+============================== */
+
+document.addEventListener(
+
+    "keydown",
+
+    function(event){
+
+
+        if(
+            event.key === "ArrowRight"
+        ){
+
+            nextSlide();
+
+        }
+
+
+        if(
+            event.key === "ArrowLeft"
+        ){
+
+            previousSlide();
+
+        }
+
+
+    }
+
+);
+
+
+/* ==============================
+   START WEBSITE
+============================== */
+
+/*
+Create all 19 year slides
++
+1 final surprise slide
+=
+20 total slides
+*/
+
+createSlides();
+
+
+updateProgress();
+
+
+</script>
+
+</body>
+
+</html>
